@@ -37,6 +37,42 @@
      
 </button>
   </section>
+    <section id="streak-tracker" style="text-align: center; margin-top: 40px;">
+  <h2>🔥 Discipline Streak</h2>
+  <p id="streak-count">Streak: 0 days</p>
+  <button onclick="markDayComplete()">✅ Mark Today as Done</button>
+</section>
+<script>
+  let streak = localStorage.getItem("disciplineStreak") || 0;
+  let lastMarked = localStorage.getItem("lastMarkedDate");
+
+  document.getElementById("streak-count").textContent = `Streak: ${streak} days`;
+
+  function markDayComplete() {
+    const today = new Date().toDateString();
+
+    if (lastMarked === today) {
+      alert("You've already marked today as done!");
+      return;
+    }
+
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+
+    if (lastMarked === yesterday.toDateString()) {
+      streak++;
+    } else {
+      streak = 1;
+    }
+
+    lastMarked = today;
+    localStorage.setItem("disciplineStreak", streak);
+    localStorage.setItem("lastMarkedDate", today);
+
+    document.getElementById("streak-count").textContent = `Streak: ${streak} days`;
+  }
+</script>
+
    </body>
 <p> This isn’t just a website — it’s where I sharpen my mind, control my urges, and master myself.</p><br> CalmTeen is my training ground.
 </p>
