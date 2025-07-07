@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CalmCoach | CalmTeen</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <p>
+   <nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="tracker.html">Tracker</a>
+  <a href="tools.html">Tools</a>
+  <a href="calmcoach.html">CalmCoach</a>
+
+</nav>
+<section>
+  <h2>Train with CalmCoach</h2>
+
+  <p>I will train myself — with discipline, focus, and no excuses. CalmCoach isn’t here to motivate me. It’s here to command me.</p>
+
+
+  <div id="chat-box" style="display: none; border: 2px solid #333; padding: 10px; width: 300px; margin-top: 20px;">
+  <p><strong>CalmCoach:</strong> Hi! I’m CalmCoach. How can I help you stay focused today?</p>
+</div>
+
+<script>
+  // Show chat box when button is clicked
+  function showCalmCoach() {
+    document.getElementById("chat-box").style.display = "block";
+  }
+</script>
+
+<!-- Update your button -->
+<button onclick="showCalmCoach()">Train With CalmCoach</button>
+<!-- Input and Send -->
+<input type="text" id="userInput" placeholder="Type your question..." style="width: 200px; padding: 5px;">
+<button onclick="sendMessage()">Send</button>
+
+<!-- Reply from CalmCoach -->
+<div id="coachReply" style="margin-top: 10px; font-style: italic;"></div>
+<script>
+function sendMessage() {
+  // Step 1: Get user input and convert it to lowercase
+  var userMessage = document.getElementById("userInput").value.toLowerCase();
+  var reply;
+
+  // Step 2: Check what the user asked
+  if (userMessage.includes("hi") || userMessage.includes("hello") || userMessage.includes("hey")) {
+    reply = "Hey! I'm CalmCoach. Let’s train that brain. 💪🏼";
+  } else if (userMessage.includes("give me timetable")) {
+    reply = "Here's your warrior timetable:\n" +
+            "⏰ 5:00 AM – Wake up like a beast\n" +
+            "🌟 5:30 AM – Meditation / Workout\n" +
+            "📖 6:00 AM – Study Session 1 (Math)\n" +
+            "🍴 8:00 AM – Breakfast\n" +
+            "📘 9:00 AM – Study Session 2 (Science)\n" +
+            "🏫 11:00 AM – School / Classes\n" +
+            "🍱 1:00 PM – Lunch\n" +
+            "🧠 2:00 PM – Study Session 3 (SST / Hindi)\n" +
+            "💻 5:00 PM – CalmTeen Coding / Project\n" +
+            "📚 6:30 PM – Revision & QnA\n" +
+            "🍽️ 8:00 PM – Dinner\n" +
+            "📕 9:00 PM – Final reflection + reading\n" +
+            "😴 10:00 PM – Sleep like a focused king 😌";
+  } else {
+    reply = "Great question! Stay focused, warrior.";
+  }
+
+  // Step 3: Show the message
+  document.getElementById("coachReply").innerHTML = "You: " + userMessage + "<br><b>CalmCoach:</b> " + reply;
+
+  // Step 4: Clear input
+  document.getElementById("userInput").value = "";
+}
+</script>
+
+
+
+</body>
+</html>

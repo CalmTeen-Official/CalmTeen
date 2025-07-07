@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Discipline Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <p id="streakDisplay" style="font-weight: bold; font-size: 18px;">Loading streak...</p>
+
+  <h1>Discipline Tracker</h1>
+  <nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="tracker.html">Tracker</a>
+  <a href="tools.html">Tools</a>
+<a href="calmcoach.html">CalmCoach</a>
+
+</nav>
+<script>
+  function updateStreak() {
+    const today = new Date().toDateString();
+    const lastVisit = localStorage.getItem('lastVisit');
+    const storedStreak = localStorage.getItem('streakCount');
+    let streak = storedStreak ? parseInt(storedStreak) : 0;
+
+    if (lastVisit) {
+      const lastDate = new Date(lastVisit);
+      const diffTime = new Date(today) - lastDate;
+      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+      if (diffDays === 1) {
+        streak += 1; // continued streak
+      } else if (diffDays > 1) {
+        streak = 1; // reset streak
+      }
+    } else {
+      streak = 1;
+    }
+
+    localStorage.setItem('lastVisit', today);
+    localStorage.setItem('streakCount', streak);
+
+    document.getElementById('streakDisplay').innerText =
+      `🔥 Streak: ${streak} day${streak > 1 ? 's' : ''} strong`;
+  }
+
+  updateStreak();
+</script>
+
+
+
+    
+  <p>Mark ✅ when done.</p>
+
+  <ul>
+    <li>📖 Study 5 hours</li>
+    <li>💪 Physical activity</li>
+    <li>🧘 Meditation</li>
+    <li>👨‍👩‍👦 Family Time</li>
+    <li>📵 No social media / games</li>
+    <li>🛌 Sleep before 10pm</li>
+  </ul>
+</body>
+</html>
